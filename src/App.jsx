@@ -5,6 +5,7 @@ import Events from "./routes/Events.jsx";
 import Joke from "./routes/Joke.jsx";
 import {Route, Routes} from "react-router-dom";
 import Home from "./routes/Home.jsx";
+import AddEvent from "./routes/AddEvent.jsx";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/event" element={<Events user={user} />}/>
+        <Route path="/addEvent" element={<AddEvent user={user} />}/>
         <Route path="/joke" element={<Joke user={user} />}/>
       </Routes>
     </div>

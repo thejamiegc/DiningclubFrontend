@@ -17,6 +17,13 @@ const login = (user, password) => {
       .then(res => {setToken(res.token) })
 }
 
+const addEvent = (time,location,dish,pricePrPerson) => {
+    const options = makeOptions("POST", true,{time: time, location: location, dish: dish, pricePrPerson: pricePrPerson });
+    return fetch(baseURL + "/dinnerevent/create", options)
+      .then(handleHttpErrors)
+      .then(res => {setToken(res.token) })
+}
+
 const fetchData = (ressource) => {
     const options = makeOptions("GET",true); //True add's the token
    return fetch(baseURL + ressource, options).then(handleHttpErrors);
@@ -73,6 +80,7 @@ function readJwtToken (token) {
      logout,
      fetchData,
      readJwtToken,
+     addEvent,
  }
 }
 const facade = apiFacade();
