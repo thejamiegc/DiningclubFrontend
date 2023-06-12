@@ -31,6 +31,13 @@ const deleteEvent = (id) => {
       .then(res => {setToken(res.token) })
 }
 
+const updateEvent = (id,time,location,dish,pricePrPerson) => {
+    const options = makeOptions("PUT", true,{id: id, time: time, location: location, dish: dish, pricePrPerson: pricePrPerson });
+    return fetch(baseURL + "/dinnerevent/update/" + id, options)
+      .then(handleHttpErrors)
+      .then(res => {setToken(res.token) })
+}
+
 const fetchData = (ressource) => {
     const options = makeOptions("GET",true); //True add's the token
    return fetch(baseURL + ressource, options).then(handleHttpErrors);
@@ -89,6 +96,7 @@ function readJwtToken (token) {
      readJwtToken,
      addEvent,
      deleteEvent,
+     updateEvent,
  }
 }
 const facade = apiFacade();

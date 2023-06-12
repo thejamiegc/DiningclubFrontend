@@ -11,7 +11,8 @@ const Header = ({loggedIn, login, user, logout}) => {
             <li id="link"><NavLink to="/joke">Jokes</NavLink></li>
             {loggedIn && user.roles.includes("admin") && (
                 <>
-             <li id="link"><NavLink to="/addEvent">Add Event</NavLink></li>
+                    <li id="link"><NavLink to="/addEvent">Add Event</NavLink></li>
+                    <li id="link"><NavLink to="/updateEvent">Update Event</NavLink></li>
              </>)}
 
             {!loggedIn ? (<LogIn login={login} />) :
