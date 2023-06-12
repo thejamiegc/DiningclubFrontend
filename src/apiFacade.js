@@ -10,7 +10,7 @@ function apiFacade() {
  /* Insert utility-methods from a later step (d) here (REMEMBER to uncomment in the returned object when you do)*/
  
 const login = (user, password) => {
-    // console.log("login");
+    //console.log("login" + user + password);
     const options = makeOptions("POST", true,{username: user, password: password });
     return fetch(baseURL + "/login", options)
       .then(handleHttpErrors)
