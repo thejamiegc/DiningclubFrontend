@@ -10,6 +10,12 @@ const Events = ({user}) => {
         pricePrPerson: "",
     }]);
 
+    const deleteEvent = (evt) => {
+        evt.preventDefault();
+        facade.deleteEvent(evt.target.value);
+    }
+
+
 useEffect( () => {
     if(user.username !== ''){
         facade.fetchData("/dinnerevent").then(res => setDinnerEvents(res));
@@ -28,6 +34,11 @@ useEffect( () => {
                     <th>Location</th>
                     <th>Dish</th>
                     <th>Price pr person</th>
+                    {user.roles.includes("admin") && (
+                        <>
+                        <th></th>
+                    </>
+                    )}
                 </tr>
                 </thead>
                 <tbody>
@@ -38,7 +49,11 @@ useEffect( () => {
                         <td>{dinnerEvent.location}</td>
                         <td>{dinnerEvent.dish}</td>
                         <td>{dinnerEvent.pricePrPerson}</td>
-
+                        {user.roles.includes("admin") && (
+                            <>
+                            <td><button value={dinnerEvent.id} onClick={deleteEvent}>Delete</button></td>
+                        </>
+                        )}
                     </tr>
                 ))}
                 </tbody>

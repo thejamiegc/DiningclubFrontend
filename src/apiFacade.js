@@ -24,6 +24,13 @@ const addEvent = (time,location,dish,pricePrPerson) => {
       .then(res => {setToken(res.token) })
 }
 
+const deleteEvent = (id) => {
+    const options = makeOptions("DELETE", true,{id: id});
+    return fetch(baseURL + "/dinnerevent/delete/" + id, options)
+      .then(handleHttpErrors)
+      .then(res => {setToken(res.token) })
+}
+
 const fetchData = (ressource) => {
     const options = makeOptions("GET",true); //True add's the token
    return fetch(baseURL + ressource, options).then(handleHttpErrors);
@@ -81,6 +88,7 @@ function readJwtToken (token) {
      fetchData,
      readJwtToken,
      addEvent,
+     deleteEvent,
  }
 }
 const facade = apiFacade();
