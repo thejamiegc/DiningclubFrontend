@@ -7,6 +7,7 @@ import {Route, Routes} from "react-router-dom";
 import Home from "./routes/Home.jsx";
 import AddEvent from "./routes/AddEvent.jsx";
 import UpdateEvent from "./routes/UpdateEvent.jsx";
+import Assignment from "./routes/Assignment.jsx";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/event" element={<Events user={user} />}/>
+        <Route path="/Assignment" element={<Assignment user={user} />}/>
         <Route path="/addEvent" element={<AddEvent user={user} />}/>
         <Route path="/updateEvent" element={<UpdateEvent user={user} />}/>
         <Route path="/joke" element={<Joke user={user} />}/>

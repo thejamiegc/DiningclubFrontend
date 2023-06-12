@@ -1,4 +1,4 @@
-import {baseURL, dadJokeURL} from "./settings.js";
+import {baseURL} from "./settings.js";
 function handleHttpErrors(res) {
  if (!res.ok) {
    return Promise.reject({ status: res.status, fullError: res.json() })
@@ -36,6 +36,20 @@ const updateEvent = (id,time,location,dish,pricePrPerson) => {
     return fetch(baseURL + "/dinnerevent/update/" + id, options)
       .then(handleHttpErrors)
       .then(res => {setToken(res.token) })
+}
+
+const addFamilyToMember = (familyName, email) => {
+    const options = makeOptions("POST", true,{familyName});
+    return fetch(baseURL + "/member/assignment/" + email, options)
+      .then(handleHttpErrors)
+        .then(res => {setToken(res.token) })
+}
+
+const addEventToFamily = (familyName,eventid) => {
+    const options = makeOptions("POST", true,{familyName: familyName});
+    return fetch(baseURL + "/dinnerevent/assignment/" + eventid, options)
+        .then(handleHttpErrors)
+        .then(res => {setToken(res.token) })
 }
 
 const fetchData = (ressource) => {
@@ -97,6 +111,8 @@ function readJwtToken (token) {
      addEvent,
      deleteEvent,
      updateEvent,
+     addFamilyToMember,
+     addEventToFamily,
  }
 }
 const facade = apiFacade();
