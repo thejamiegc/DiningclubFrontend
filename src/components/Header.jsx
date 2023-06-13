@@ -8,7 +8,6 @@ const Header = ({loggedIn, login, user, logout}) => {
         <ul className="header">
             <li id="link"><NavLink to={"/"}>Home</NavLink></li>
             <li id="link"><NavLink to="/event">Event</NavLink></li>
-            <li id="link"><NavLink to="/joke">Jokes</NavLink></li>
             <li id="link"><NavLink to="/Assignment">Assignment</NavLink></li>
             {loggedIn && user.roles.includes("admin") && (
                 <>

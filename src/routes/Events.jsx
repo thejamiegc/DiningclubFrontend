@@ -17,15 +17,14 @@ const Events = ({user}) => {
 
 
 useEffect( () => {
-    if(user.username !== ''){
+    //if(user.username !== ''){
         facade.fetchData("/dinnerevent").then(res => setDinnerEvents(res));
-    }
+    //}
 })
 
     return (
         <div>
             <h1>Dinner Events</h1>
-            {user.username ? (<>
             <table className="table">
                 <thead>
                 <tr>
@@ -58,9 +57,6 @@ useEffect( () => {
                 ))}
                 </tbody>
             </table>
-                </>) : (
-                <p>Please login to see the dinner events</p>
-                )}
         </div>
     );
 };

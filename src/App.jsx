@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import facade from "./apiFacade";
 import Header from "./components/Header.jsx";
 import Events from "./routes/Events.jsx";
-import Joke from "./routes/Joke.jsx";
 import {Route, Routes} from "react-router-dom";
 import Home from "./routes/Home.jsx";
 import AddEvent from "./routes/AddEvent.jsx";
@@ -36,7 +35,6 @@ function App() {
         <Route path="/Assignment" element={<Assignment user={user} />}/>
         <Route path="/addEvent" element={<AddEvent user={user} />}/>
         <Route path="/updateEvent" element={<UpdateEvent user={user} />}/>
-        <Route path="/joke" element={<Joke user={user} />}/>
       </Routes>
     </div>
   )
